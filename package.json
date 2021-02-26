@@ -1,0 +1,23 @@
+{
+  "name": "convertible",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "build-app": "git pull && cd client && npm run build-app && cd .. && npm install && npm start",
+    "start": "pm2 start app.js -n Convertible9000 && pm2 monit",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "~1.4.4",
+    "crypto-random-string": "^3.3.0",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.1",
+    "express-handlebars": "^4.0.6",
+    "pdfkit": "^0.11.0",
+    "sharp": "^0.26.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
