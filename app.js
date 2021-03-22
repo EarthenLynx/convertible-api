@@ -1,4 +1,5 @@
 // Initialize the base modules
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -8,7 +9,6 @@ const { convertImgService } = require('./services/imgconverter');
 const { convertPdfService } = require('./services/pdfconverter');
 
 // When reloading the app, clean up the temp dir and load env vars
-require('dotenv').config();
 require('./util/filehandler').cleanTempDir(path.join(__dirname, './store/tmp/'));
 const host = process.env.HOST || 'http://localhost';
 const port = process.env.PORT || 9000;
@@ -25,9 +25,6 @@ app.use((req, res, next) => {
 	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
 	next();
 });
-
-// Set a static folder
-app.use(express.static('public'));
 
 // Configure the service routes
 app.post('/convert/img', (req, res) => convertImgService(req, res));
